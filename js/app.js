@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const addBtn = document.getElementById("addNoteBtn");
   addBtn.addEventListener("click", () => {
+    // console.log("here");
     ui.addNote();
   });
 });

@@ -1,3 +1,23 @@
+/* Root Variables */
+:root {
+  --font-family: Arial, sans-serif;
+  --bg-color: #fdfdfd;
+  --text-color: #333;
+  --header-bg: #ffeb3b;
+  --header-shadow: rgba(0, 0, 0, 0.1);
+  --btn-bg: #4caf50;
+  --btn-text: #fff;
+  --btn-radius: 5px;
+  --container-gap: 1rem;
+  --note-min-width: 200px;
+
+  /* Note Specific */
+  --note-bg: #fff9c4; /* light yellow */
+  --note-border: #f0e68c;
+  --note-shadow: rgba(0, 0, 0, 0.1);
+  --note-radius: 8px;
+}
+
 /* Basic Reset */
 * {
   margin: 0;
@@ -5,42 +25,67 @@
   box-sizing: border-box;
 }
 
+/* Body Styling */
 body {
-  font-family: Arial, sans-serif;
-  background: #fdfdfd;
-  color: #333;
+  font-family: var(--font-family);
+  background: var(--bg-color);
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background: #ffeb3b;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: var(--header-bg);
+  box-shadow: 0 2px 4px var(--header-shadow);
 }
 
 header h1 {
   font-size: 1.5rem;
 }
 
+/* Add Note Button */
 #addNoteBtn {
   padding: 0.5rem 1rem;
   border: none;
-  background: #4caf50;
-  color: white;
+  background: var(--btn-bg);
+  color: var(--btn-text);
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: var(--btn-radius);
+  transition: background 0.3s ease;
 }
 
+#addNoteBtn:hover {
+  background: #43a047;
+}
+
+/* Notes Container */
 .notes-container {
   flex: 1;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(var(--note-min-width), 1fr));
+  gap: var(--container-gap);
+}
+
+/* Note Styling */
+.note {
+  background: var(--note-bg);
+  border: 1px solid var(--note-border);
+  border-radius: var(--note-radius);
+  box-shadow: 0 4px 6px var(--note-shadow);
+  padding: 1rem;
+  word-wrap: break-word;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 10px var(--note-shadow);
 }
