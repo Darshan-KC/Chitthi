@@ -1,4 +1,3 @@
-/* Root Variables */
 :root {
   --font-family: Arial, sans-serif;
   --bg-color: #fdfdfd;
@@ -11,12 +10,18 @@
   --container-gap: 1rem;
   --note-min-width: 200px;
 
-  /* Note Specific */
-  --note-bg: #fff9c4; /* light yellow */
-  --note-border: #f0e68c;
+  /* Note Styles */
   --note-shadow: rgba(0, 0, 0, 0.1);
   --note-radius: 8px;
+
+  /* 🎨 Note Color Palette */
+  --note-color-1: #fff9c4; /* Light Yellow */
+  --note-color-2: #ffccbc; /* Light Red */
+  --note-color-3: #c8e6c9; /* Light Green */
+  --note-color-4: #bbdefb; /* Light Blue */
+  --note-color-5: #f8bbd0; /* Light Pink */
 }
+
 
 /* Basic Reset */
 * {
