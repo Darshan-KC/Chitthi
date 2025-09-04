@@ -1,8 +1,10 @@
 export class Note {
-  constructor(id, content, createdAt) {
+  constructor(id, content, createdAt, x = 50, y = 50) {
     this.id = id;
     this.content = content;
     this.createdAt = createdAt;
+    this.x = x;
+    this.y = y;
     this.colorClass = this.getRandomColor();
   }
 
@@ -19,7 +21,12 @@ export class Note {
 
   render() {
     return `
-      <div class="note ${this.colorClass}" data-id="${this.id}">
+      <div 
+        class="note ${this.colorClass}" 
+        data-id="${this.id}" 
+        style="left:${this.x}px; top:${this.y}px;"
+        draggable="false"
+      >
         <p contenteditable="true">${this.content}</p>
       </div>
     `;
