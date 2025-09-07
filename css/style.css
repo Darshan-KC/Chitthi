@@ -77,6 +77,8 @@ header h1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--note-min-width), 1fr));
   gap: var(--container-gap);
+
+  position: relative;
 }
 
 /* Note Styling */
@@ -88,9 +90,19 @@ header h1 {
   padding: 1rem;
   word-wrap: break-word;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  position: absolute;
+  width: 200px;
+  min-height: 100px;
+  cursor: grab;
 }
 
 .note:hover {
   transform: scale(1.02);
   box-shadow: 0 6px 10px var(--note-shadow);
+}
+
+.note:active {
+  cursor: grabbing;
+  transform: scale(1.03);
 }
