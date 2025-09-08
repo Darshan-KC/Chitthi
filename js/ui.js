@@ -3,7 +3,8 @@ import { Note } from "./note.js";
 
 export class UI {
   constructor() {
-    this.notesContainer = document.getElementById("notesBoard");
+    // this.notesContainer = document.getElementById("notesBoard");
+    this.notesContainer = document.getElementById("notesContainer");
     this.draggingNote = null;
     this.offsetX = 0;
     this.offsetY = 0;
