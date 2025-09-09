@@ -12,23 +12,43 @@ export class UI {
 
   renderNotes() {
     const notesData = Storage.getNotes();
-    this.notesContainer.innerHTML = notesData.map(noteData => {
-      const note = new Note(noteData.id, noteData.content, noteData.createdAt, noteData.x, noteData.y);
-      return note.render();
-    }).join("");
+    this.notesContainer.innerHTML = notesData
+      .map((noteData) => {
+        const note = new Note(
+          noteData.id,
+          noteData.content,
+          noteData.createdAt,
+          noteData.x,
+          noteData.y
+        );
+        return note.render();
+      })
+      .join("");
 
     this.addDragListeners();
   }
 
+  // addNote() {
+  //   const newNote = new Note(Date.now(), "New Note", new Date());
+  //   Storage.saveNote(newNote);
+  //   this.renderNotes();
+  // }
+
   addNote() {
-    const newNote = new Note(Date.now(), "New Note", new Date());
-    Storage.saveNote(newNote);
+    const noteObj = {
+      id: Date.now(),
+      content: "New Note",
+      createdAt: new Date().toISOString(),
+      x: 50,
+      y: 50,
+    };
+    Storage.saveNote(noteObj);
     this.renderNotes();
   }
 
   addDragListeners() {
     const notes = document.querySelectorAll(".note");
-    notes.forEach(note => {
+    notes.forEach((note) => {
       note.addEventListener("mousedown", (e) => {
         this.draggingNote = note;
         const rect = note.getBoundingClientRect();
