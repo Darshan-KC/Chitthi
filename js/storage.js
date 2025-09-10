@@ -15,11 +15,20 @@ export const Storage = {
 
   updateNotePosition(id, x, y) {
     const notes = this.getNotes();
-    const note = notes.find(n => n.id === id);
+    const note = notes.find((n) => n.id === id);
     if (note) {
       note.x = x;
       note.y = y;
       this.saveNotes(notes);
     }
-  }
+  },
+
+  updateNoteContent(id, newContent) {
+    const notes = this.getNotes();
+    const note = notes.find((n) => n.id === id);
+    if (note) {
+      note.content = newContent;
+      this.saveNotes(notes);
+    }
+  },
 };
