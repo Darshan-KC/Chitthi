@@ -3,7 +3,6 @@ import { Note } from "./note.js";
 
 export class UI {
   constructor() {
-    // this.notesContainer = document.getElementById("notesBoard");
     this.notesContainer = document.getElementById("notesContainer");
     this.draggingNote = null;
     this.offsetX = 0;
@@ -11,7 +10,21 @@ export class UI {
   }
 
   renderNotes() {
-    const notesData = Storage.getNotes();
+    let notesData = Storage.getNotes();
+
+    // Auto-create a note if none exist
+    if (notesData.length === 0) {
+      const defaultNote = {
+        id: Date.now(),
+        content: "New Note",
+        createdAt: new Date().toISOString(),
+        x: 50,
+        y: 50,
+      };
+      Storage.saveNote(defaultNote);
+      notesData = Storage.getNotes();
+    }
+
     this.notesContainer.innerHTML = notesData
       .map((noteData) => {
         const note = new Note(
@@ -25,14 +38,8 @@ export class UI {
       })
       .join("");
 
-    this.addDragListeners();
+    this.addNoteListeners();
   }
-
-  // addNote() {
-  //   const newNote = new Note(Date.now(), "New Note", new Date());
-  //   Storage.saveNote(newNote);
-  //   this.renderNotes();
-  // }
 
   addNote() {
     const noteObj = {
@@ -46,9 +53,13 @@ export class UI {
     this.renderNotes();
   }
 
-  addDragListeners() {
+  addNoteListeners() {
     const notes = document.querySelectorAll(".note");
+
     notes.forEach((note) => {
+      const p = note.querySelector("p");
+
+      // Dragging
       note.addEventListener("mousedown", (e) => {
         this.draggingNote = note;
         const rect = note.getBoundingClientRect();
@@ -56,8 +67,15 @@ export class UI {
         this.offsetY = e.clientY - rect.top;
         note.style.zIndex = 1000;
       });
+
+      // Auto-save content
+      p.addEventListener("input", () => {
+        const id = Number(note.dataset.id);
+        Storage.updateNoteContent(id, p.innerText);
+      });
     });
 
+    // Handle dragging
     document.addEventListener("mousemove", (e) => {
       if (!this.draggingNote) return;
       this.draggingNote.style.left = `${e.clientX - this.offsetX}px`;
@@ -66,10 +84,10 @@ export class UI {
 
     document.addEventListener("mouseup", () => {
       if (!this.draggingNote) return;
-      const id = this.draggingNote.dataset.id;
+      const id = Number(this.draggingNote.dataset.id);
       const x = parseInt(this.draggingNote.style.left);
       const y = parseInt(this.draggingNote.style.top);
-      Storage.updateNotePosition(Number(id), x, y);
+      Storage.updateNotePosition(id, x, y);
       this.draggingNote.style.zIndex = "";
       this.draggingNote = null;
     });
