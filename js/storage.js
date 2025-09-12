@@ -31,4 +31,9 @@ export const Storage = {
       this.saveNotes(notes);
     }
   },
+  
+  deleteNote(id) {
+    const notes = this.getNotes().filter((n) => n.id !== id);
+    this.saveNotes(notes);
+  },
 };

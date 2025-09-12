@@ -27,6 +27,7 @@ export class Note {
         style="left:${this.x}px; top:${this.y}px;"
         draggable="false"
       >
+      <button class="delete-note">❌</button>
         <p contenteditable="true">${this.content}</p>
       </div>
     `;
