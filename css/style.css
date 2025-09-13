@@ -106,3 +106,18 @@ header h1 {
   cursor: grabbing;
   transform: scale(1.03);
 }
+
+.delete-note {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.delete-note:hover {
+  opacity: 1;
+}
