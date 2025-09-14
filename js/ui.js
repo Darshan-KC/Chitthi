@@ -73,6 +73,13 @@ export class UI {
         const id = Number(note.dataset.id);
         Storage.updateNoteContent(id, p.innerText);
       });
+
+      // Delete note
+      deleteBtn.addEventListener("click", () => {
+        const id = Number(note.dataset.id);
+        Storage.deleteNote(id);
+        this.renderNotes();
+      });
     });
 
     // Handle dragging
