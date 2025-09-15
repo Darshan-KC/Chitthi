@@ -58,6 +58,7 @@ export class UI {
 
     notes.forEach((note) => {
       const p = note.querySelector("p");
+      const deleteBtn = note.querySelector(".delete-note");
 
       // Dragging
       note.addEventListener("mousedown", (e) => {
