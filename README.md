@@ -12,3 +12,39 @@ You can add, drag, edit, and delete notes directly on the screen. Notes are stor
 - ❌ Delete notes with a single click  
 - 🎨 Random background colors for fun  
 - 💾 Persistent storage using `localStorage`  
+
+---
+
+## 📂 Project Structure
+```
+chitthi/
+│── index.html          # Main entry point
+│── style.css           # App styles
+│── README.md           # Project documentation
+│
+└── js/
+    │── app.js          # App initialization
+    │── ui.js           # UI rendering & event handling
+    │── note.js         # Note class (UI for each note)
+    │── storage.js      # LocalStorage handling
+```
+
+---
+
+## 🛠️ Technologies Used
+- **HTML5**  
+- **CSS3 (with CSS Variables)**  
+- **Vanilla JavaScript (ES Modules)**  
+- **LocalStorage** for persistence  
+
+---
+
+## 📦 Installation & Usage
+1. Clone this repo:
+   ```bash
+   git clone https://github.com/your-username/chitthi.git
+   ```
+2. Open `index.html` in your browser.
+3. Start adding sticky notes 🎉
+
+---
