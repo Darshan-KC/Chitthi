@@ -48,3 +48,17 @@ chitthi/
 3. Start adding sticky notes 🎉
 
 ---
+
+## 📜 License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+This project is licensed under the [MIT License](LICENSE).  
+You are free to use, modify, and distribute this software in compliance with the license terms.
+Use responsibly and only for **educational purposes**.
+
+## ©️ Copyright
+
+© 2025 Darshan KC 
+All rights reserved.  
+CHITTHI is an open-source project released under the MIT license.
